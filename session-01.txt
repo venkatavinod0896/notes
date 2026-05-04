@@ -1,0 +1,158 @@
+What is DevOps?
+===============
+SDLC -> Software development life cycle
+
+Requirements
+Planning & Analyse
+Development & Construction -> development
+Testing -> testing
+Handover -> deployment
+Maintainance
+
+Cost optimise, Security, high available, scale
+
+Waterfall vs Agile vs Agile with DevOps
+=======================================
+School management system
+
+Stakeholders -> Who is part of the system
+
+Students, parents, teachers, management, investors, non-teaching staff, government agencies
+
+Customers, bank staff, management, investors, RBI, government, IT-management, business management, partners, etc.
+
+year end exam
+=============
+parents -> fee pay
+students -> study
+teachers -> teach
+
+results -> 40%
+60%
+
+unit-test-I, II, III, IV, V
+Quarterly, Half yearly, pre-final, final
+
+1st month
+========
+teacher -> he should complete syllabus
+student -> 1 week before
+
+results -> 60% pass
+analyse the results -> 
+
+unit-test-II
+===========
+61% 
+
+final -> 80% pass
+20% fail
+
+slip tests -> every day simple exam. 10 multiple choice, short answer questions
+100-200 exams
+
+99%
+
+Waterfall Model
+===============
+1M$
+2 years for delivery
+architects, developers, testers, build and release, database, linux, networking, storage, share-point, etc...
+1-2 months
+2-3 months
+development -> 9 months
+testing & deployment -> 4 months
+
+100 defects
+20 invalid defects -> 2 or 3 days
+
+product delivery -> Maruti 800
+
+Operations, Monitoring, Service Desk, L1 support, etc.
+
+Agile
+===============
+divide into small modules
+
+account creation, login, forgot password, otp, products catalogue, order management, delivery management, reviews, etc...
+
+sprints
+=========
+sprint-1 -> 1month
+
+user management -> requirements
+
+20 days -> developement
+10 days -> testing and deployment
+
+standup/sprint meetings
+
+10 days -> 10 defects
+8, 2 invalid defect
+
+Agile with DevOps
+=================
+developer -> 50 lines developed
+
+enter your first name _____________
+
+if we test and deploy this on the same day?
+
+1. enter 40 char -> pass
+2. enter 1 char -> negative
+3. enter special chars -> negative
+4. enter numbers -> negative
+
+3-4%
+better co-ordination
+
+Whatever you develop, same day it should be deployed and tested -> DevOps
+Continous improvement
+
+DevOps -> 
+DevSecOps -> 
+
+Whatever you develop, same day it should be deployed, scan for security issues and tested
+
+DevOps is the process of developing, building, scanning and testing the application continously, for example if developers writes even single line of code it should be built, scanned, tested deployed immidiately and feedback should be given to developers, this is called DevOps
+
+We can make use of tools to acheive this process.. Jenkins(CICD), git(SCM), Scanning tools, Kubernetes, Cloud(scalability), etc...
+
+P0, P1, P2, P3, P4, etc..
+
+P0 and P1 -> all customers are facing this problem
+SLA -> Service level agreement
+max 2hrs
+99.99%
+
+TCS should pay penality
+
+AI -> Predective alerting and anomaly detection, auto remidiation
+
+120bpm -> heart attack
+
+100, 110
+
+which is not normal -> anomaly detection
+
+CPU -> 80% threshold -> for 5min
+
+Monday 3AM -> low traffic
+10%
+60% traffic -> abnormal
+
+10% CPU, 2nd hour -> 20%, 3rd hour -> 30%
+
+AWS account
+	1. Private bank credit and debit cards
+	2. Give me the same address as in bank
+	3. PAN card is mandatory
+	4. International transactions should be enabled in netbanking
+
+100$ -> 200$
+
+
+
+
+
+
