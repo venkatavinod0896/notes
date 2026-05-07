@@ -1,0 +1,129 @@
+vim <file-name> -> if file exists it open, if it does not exists it will create and open
+
+colon mode
+==========
+:wq -> write and quit
+:q -> quit, if we haven't done any changes
+:q! -> force quit
+:set nu => display numbers
+:set nonu -> don't display numbers
+:<line-number> -> cursor will move to that line
+:/<word-to-search> -> forward search. press n for next word
+:?<word-to-search> -> backward search.
+:2d -> delete line number 2
+:2,5d -> 2-5 line numbers delete
+:%d -> % referes to everything. delete full content
+:noh -> don't highlight the word
+:4s/<word-to-find>/<word-to-replace> -> in line-number 4, replace the first occurence
+:4s/<word-to-find>/<word-to-replace>/g -> in line-number 4, replace all occurences
+:%s/<word-to-find>/<word-to-replace> -> all line-numbers, first occurence
+:%s/<word-to-find>/<word-to-replace>/g -> all line-numbers, all occurences
+
+Esc mode
+=========
+u -> undo the changes
+ctrl+r -> redo the changes
+shift+g -> bottom of the file
+gg -> top of the file
+yy -> copy the line
+p -> paste the copied line, under the present cursor line
+shift+p -> paste the copied line, above the present cursor line
+10p -> paste 10times
+
+
+Linux Administration
+===================
+1. User management
+
+IAM -> identity access management
+
+User, Group, Role, Permissions
+A group has multiple users
+A user have specific role
+A role will have permissions
+
+ramesh, he joined devops team, he has trainee role, trainee role has particular permissions
+
+roles/sub-groups
+===========
+devops-trainee -> only read access -> ramesh will be added to this group
+devops-juniors -> he can do specific writes -> ramesh will be moved to this group
+devops-seniors -> he can write and update
+devops-leads   -> he can write, update and delete
+
+create user -> linux user must have 1 primiary group, and 0-many secondary groups
+useradd <user-name> -> creates user and group with same name
+id <user-name>
+/etc/passwd -> user information
+/etc/group -> group information
+
+groupadd <group-name>
+
+usermod -g <group-name> <user-name> -> -g means primary group
+usermod -G <group-name> <user-name> -> adding secondary group
+usermod -aG <group-name> <user-name> -> appending secondary group to user
+
+passwd <user-name>
+
+54.173.115.209 ramesh ramesh123
+
+Linux by default allows key based authentication, if we want password based authentication we need to edit the configuration
+
+ssh config -> /etc/ssh/sshd_config
+
+PasswordAuthentication no
+sshd -t -> check for syntax of /etc/ssh/sshd_config file
+
+systemctl restart sshd -> it will restart sshd service
+
+how to give sudo access to ramesh
+================================
+1. add user to wheel group
+
+/etc/sudoers
+
+1. remove ramesh from wheel group
+gpasswd -d ramesh wheel
+
+%devops-user-managers    ALL=(ALL)       /usr/sbin/useradd, /usr/sbin/usermod
+
+
+devops-user-managers -> add ramesh to this group, give permissions to this group
+
+permissions
+============
+
+-rw-r--r--. 1 ramesh devops
+
+- rw-	 			r--					r--
+  user/owner	 owner-primary-group	others
+  u					g					o
+  
+chmod g+w <file-name> -> owner of sudo user can execute this command
+
+r -> 4
+w -> 2
+x -> 1
+
+chmod 640
+
+ownership
+==========
+chown -> owner also can't execute this command. only root user can execute
+chown user:group <file-name>
+chown -R user:group <folder> -> everything inside the folder will get ownership set here
+
+key-based authentication
+========================
+1. ramesh should generate keys
+2. he should send his public key to admin team
+
+1. create .ssh in ramesh home directory
+2. create authorized_keys inside .ssh
+3. authorized_keys should have max 600 permission
+4. .ssh folder should have max 700 permission
+5. .ssh folder ownership should be ramesh:ramesh recursively
+
+ssh -i ramesh ramesh@54.173.115.209
+
+/home/ramesh
