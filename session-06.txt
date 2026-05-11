@@ -1,0 +1,124 @@
+search your email inbox with term slack
+
+{
+	"username": "sivakumar",
+	"home_page" : [
+		{
+			"feed_image": "",
+			"feed_username": ""
+		}
+	
+	]
+}
+
+Linux Sever(Hardware) -> Physical Server -> box/instance/node
+Database Server(Software) -> Logical server
+
+DB Server(Linux) -> DB server software
+App Server(Linux) -> App Server (JBoss, IBM WebSphere, Weblogic, glassfish, tomcat, etc..)
+Frontend Server (Linux) -> HTTP Server (IIS, Apache, Nginx, etc..) -> HTML application
+
+Microservices -> no need of application servers -> inbuilt in the code
+
+Redhat-9-DevOps-Practice -> Our joindevops AMI(Amazon machine image)
+RHEL-9 -> most common server used in banking companies
+
+ami-0220d79f3f480ecf5
+ec2-user
+DevOps321
+
+no key based authentication
+
+https://mobaxterm.mobatek.net/download-home-edition.html
+
+MySQL -> RDBMS
+Excel -> DBMS
+
+Primary Keys, Foreign Keys
+
+systemctl status mysqld
+netstat -lntp -> 3306 mysql
+ps -ef | grep mysql
+
+username: root
+
+mysql_secure_installation --set-root-pass ExpenseApp@1
+
+SQL -> Structured Query Language -> Data is in tables, rows, columns format
+
+within the server
+
+mysql -> takes us mysql promot
+
+show databases; -> list schema/databases
+
+use <database-name>; 
+
+show tables;
+
+select * from <table-name>
+
+dnf module disable nodejs -y -> disable default module
+
+1. create linux server
+2. install nodejs programming language
+3. create directory /app
+4. download the code
+5. install dependencies/libraries
+6. start the application
+
+every programming language will have some dependencies(libraries)
+
+language_name		extension		build_tool			build_file
+nodejs					.js			npm(node_pkg_mgr)	package.json
+java					.java		maven/ant/gradle	pom.xml
+python					.py			pip					requirements.txt
+
+
+build tool
+==========
+1. install dependencies
+2. package the code into artifact
+
+system/daemon user
+================
+1. humans will have login credentials, shell prompt
+
+2. system user will not have login credentials, they are just intended to run services
+
+
+curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-90s/expense-documentation/refs/heads/main/artifacts/expense-backend-v3.tar.gz
+
+npm install -> read package.json and download the dependencies from internet
+
+/bin/node /app/index.js
+
+systemctl stop/start/restart/status/enable/disable
+
+backend application needs DB_URL, username, password, etc..
+
+schema -> seperate user creation
+table
+	amount, description, category,
+	
+	
+CREATE DATABASE IF NOT EXISTS transactions;
+USE transactions;
+
+CREATE TABLE IF NOT EXISTS transactions (
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    amount      INT NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    category    VARCHAR(50) NOT NULL
+);
+
+CREATE USER IF NOT EXISTS 'expense'@'%' IDENTIFIED BY 'ExpenseApp@1';
+GRANT ALL ON transactions.* TO 'expense'@'%';
+FLUSH PRIVILEGES;
+
+
+mysql-server -> server software
+
+client -> server architecture
+
+
