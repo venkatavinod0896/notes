@@ -1,0 +1,168 @@
+Redhat-9-DevOps-Practice
+ami-0220d79f3f480ecf5
+ec2-user
+DevOps321
+
+DB server
+==========
+DB Linux Server -> Mysql-server software -> Schema/Database -> tables
+
+mysql-server -> server software, it includes mysql client also while installing
+mysql -> client software
+
+Backend Server
+===============
+1. install programming runtime -> nodejs/java/python/go/.NET
+2. create one directory for app
+3. create one system user -> to run the application
+4. download the code
+5. install dependencies
+6. Create systemctl service
+
+custom systemctl service
+=======================
+[Unit]
+Description=Expense Backend Service
+After=network.target
+
+[Service]
+User=expense
+Environment=DB_HOST=172.31.33.197
+Environment=DB_USER=expense
+Environment=DB_PWD=ExpenseApp@1
+Environment=DB_DATABASE=transactions
+ExecStart=/bin/node /app/index.js
+SyslogIdentifier=backend
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+/etc/systemd/system/backend.service
+
+systemctl daemon-reload
+systemctl start backend
+systemctl enable backend
+
+amount
+description
+category
+
+username ip-address password protocol
+
+mysql -> 3306
+
+mysql -h <host-name/ip> -uroot -pExpenseApp@1
+
+192.168.1.5 -> private IP
+106.215.174.153 -> public IP
+
+2^32 = 4Billion ipv4 address
+
+curl http://localhost:8080/health
+
+API -> Application programming interface
+
+CRUD -> 
+
+10th class results -> https://results.ap.gov.in/2026/ssc
+
+api == backend == backend app
+
+HTTP Methods
+==============
+GET POST PUT DELETE
+
+GET -> Read
+POST -> Creating/Writing information
+PUT -> Update
+Delete -> Delete the information
+
+http://32.197.241.39:8080/transaction -> GET -> give me all the transactions
+
+http://32.197.241.39:8080/transaction -> POST
+
+http://32.197.241.39:8080/transaction/1 -> GET -> give me transaction with ID 1
+
+https://manabadi.com/results/ssc/2026/20260988 -> GET
+
+
+Reverse proxy server
+====================
+proxy -> on behalf of someone
+
+forward proxy
+reverse proxy
+
+forward proxy
+=============
+client(Mobile) -> server(Prime)
+VPN
+
+1. cleint aware
+2. hiding client identity
+3. changing geo location
+4. traffic monitoring
+5. content restrictions, filtering, etc..
+
+reverse proxy
+===============
+1. server aware
+2. load balancing
+3. SSL/TLS/HTTPS termination
+4. HTTP server
+5. cache
+
+/usr/share/nginx/html -> we need to place our HTML content here
+index.html -> default page to load
+/etc/nginx/nginx.conf -> nginx settings are here
+
+/etc/sudoers -> sudoers file
+/etc/sudoers.d/ramesh
+
+/etc/nginx/default.d/expense.conf
+
+proxy_http_version 1.1;
+proxy_set_header Host              $host;
+proxy_set_header X-Real-IP         $remote_addr;
+proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+
+location /api/ {
+    proxy_pass http://172.31.37.173:8080/;
+}
+
+location /health {
+    stub_status on;
+    access_log off;
+}
+
+
+
+http://54.242.253.122/api/transaction
+
+{
+    "result": [
+        {
+            "id": 4,
+            "amount": 23000,
+            "description": "travel to dubai",
+            "category": "Travel"
+        },
+        {
+            "id": 3,
+            "amount": 100,
+            "description": "breakfast dosa",
+            "category": "Food"
+        }
+    ]
+}
+
+
+
+http://54.242.253.122/api/transaction
+Request Method
+POST
+
+{amount: 200, category: "Entertainment", description: "movie"}
