@@ -1,0 +1,62 @@
+expense-mysql
+expense-backend
+expense-frontend
+expense-lb
+
+HTTP status codes
+==================
+1XX -> Informational
+2XX -> Success
+200 -> OK
+201 -> Created
+204 -> No content
+3XX -> Redirectional
+304 -> Not modified, take it from cache
+301 -> Moved permanently
+4XX -> Client side error
+401 -> Unauthorised, please provide your authentication(Who are you?)
+403 -> Forbidden, I know who are you? but I am not allowing you
+404 -> Not found
+405 -> Method not allowed
+5XX -> Server side error
+500 -> Internal server error
+502 -> Bad gateway
+504 -> Gateway timeout
+503 -> Service unavailable
+
+http://98.88.35.125/api/transaction
+GET
+200
+
+http://98.88.35.125/api/transaction
+POST
+{
+	amount: 100, 
+	category: "Food", 
+	description: "dosa"
+}
+201
+
+http://98.88.35.125/api/transaction/1
+DELETE
+204 -> Deleted
+
+NoSQL
+======
+SQL -> tables and columns, structured data
+NoSQL -> no need to follow the schema, json schema -> huge data, no need of relations, IOT sensor data, real time data, etc.. collections, json documents
+
+Cache
+=====
+Backend -> DB (Hard Disk), ROM
+RAM -> Random access memory
+
+Backend -> Cache(RAM) -> DB(HD)
+
+key -> value
+
+Queue
+=====
+Synchronous -> HTTP -> request and response
+Asynchronus -> fire and forget
+
