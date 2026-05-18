@@ -1,0 +1,93 @@
+NoSQL
+Cache
+Queue
+
+NoSQL
+=====
+1. no structure -> collections and documents(json)
+2. real time analytics -> streaming kind of database
+
+Redis
+=====
+Cache
+in-memory(RAM) database
+key -> value
+
+app -> cache -> database
+
+Queue
+=====
+1. tight coupling -> too much dependency
+2. loose coupling -> less dependency
+
+synchronus ->  HTTP -> request and response
+asynchronus -> fire and forget
+
+both side systems no need to be available all the time
+placing the order is an event -> send a message to DTDC -> orderid, delivery details, price, etc..
+
+Queue -> point to point
+Topic -> Publish and Subscribe
+
+ActiveMQ, IBM MQ, RabbitMQ, Kafka, etc..
+
+component == module == application
+
+MongoDB -> 27017
+
+127.0.0.1:27017
+127.0.0.1 == localhost
+
+1. Installing programming language
+2. Create directory
+3. Download code, extract and Install dependencies
+4. Create system user
+5. Create systemctl service file
+6. if any data needs to be loaded, load it
+7. start the application
+
+[Unit]
+Description = Catalogue Service
+
+[Service]
+User=roboshop
+Environment=MONGO=true
+// highlight-start
+Environment=MONGO_URL="mongodb://mongodb.daws88s.online:27017/catalogue"
+// highlight-end
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=catalogue
+
+[Install]
+WantedBy=multi-user.target
+
+ctrl + ] -> quit
+
+mongosh --host mongodb.daws88s.online </app/db/master-data.js
+
+
+http://daws88s.online/api/catalogue/product/EMM -> send to catalogue backend component -> MongoDB
+80 						-> 8080 				-> 27017
+frontend public ip      backend private ip		mongodb private ip
+
+
+[Unit]
+Description = User Service
+[Service]
+User=roboshop
+Environment=MONGO=true
+// highlight-start
+Environment=REDIS_URL='redis://redis.daws88s.online:6379'
+Environment=MONGO_URL="mongodb://mongodb:27017/users"
+// highlight-end
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=user
+
+[Install]
+WantedBy=multi-user.target
+
+
+25 cpu
+reject
+
+I am learning DevSecOps, AiOPs, MLOPS, AWS in joindevops.com please find the website https://www.joindevops.com/ here as part of training I am learning services which require atleast 25cpu capacity, because our application in training consists 12 services
