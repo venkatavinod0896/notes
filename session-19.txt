@@ -1,0 +1,38 @@
+How can you call other scripts in shell
+
+script-1 -> script-2
+
+sh script-2.sh
+===============
+1. different PID
+2. cant access parent env
+
+source script-2.sh
+===============
+1. same PID
+2. can access parent env
+
+logs delete
+===========
+we don't store more than 14 days logs.
+
+/home/ec2-user/app-logs
+
+/var/log/roboshop
+cart.log
+catalogue.log
+
+sh logs-cleanup.sh <source-dir>
+
+1. number of parameters -> 1
+2. check directory exist or not
+3. find the files
+	1. *.log
+	2. file type file
+	3. 14 days old
+4. if we find the files, delete them
+5. no files to delete
+
+crontab -> we can schedule the scripts in linux server to execute
+
+sh /home/ec2-user/shell-practice/19-logs-cleanup.sh /var/log/roboshop

@@ -1,0 +1,68 @@
+1. files archieve
+2. cpu utilisation, if more than threshold for ex 80% we need to trigger email
+
+/var/log/roboshop -> source dir
+/var/log/log-archieves -> destination dir
+delete log files
+
+sh backup.sh [source-dir] [dest-dir] [days]
+
+source-dir or dest-dir should not be empty
+days default to 14, but they can override
+source-dir and dest-dir should exist
+
+find the *.log files older than 14 days
+if found, compress them and copy to dest-dir and delete the log files
+if not found, just tell them files not found nothing to do
+
+logs-archive-
+tar -czf destination files
+
+/usr/bin:/bin
+
+1. keep the script here
+2. export the path
+
+PATH=/usr/local/bin:/usr/bin:/bin
+
+check disk usage command
+go through each line
+get the current usage and partition
+if usage is greater than threshold send email
+
+
+
+
+{
+echo "To: your-to-email"
+echo "Subject: Test from linux"
+echo "Content-Type: text/html"
+echo ""
+echo "Test from linux"
+} | msmtp "your-to-email"
+
+{
+echo "To: $TO_ADDRESS"
+echo "Subject: $SUBJECT"
+echo "Content-Type: text/html"
+echo ""
+echo "$EMAIL_BODY"
+} | msmtp "$TO_ADDRESS"
+
+1. no idempotency
+2. no error handling
+3. complex syntax. imperative
+4. shell script is homogeneous
+5. shell script is not useful at scale
+
+Ansible as configuration management tool
+
+1. installing programming language
+2. creating system user
+3. creating directories
+4. installing some system packages
+5. download and extract code
+6. installing dependencies
+7. creating systemctl services
+8. client packages
+9. restarting the server
