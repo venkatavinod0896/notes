@@ -1,0 +1,13 @@
+We can load another roles into current role using import_role module, if we dont we give filename if loads by default main.yaml
+
+ansible-playbook -e "component=mongodb" roboshop.yaml
+ansible-playbook -e "component=redis" roboshop.yaml
+ansible-playbook -e "component=mysql" roboshop.yaml
+ansible-playbook -e "component=rabbitmq" roboshop.yaml
+
+meta -> main.yaml. here dependencies are mentioned, they will be executed first
+tasks -> main.yaml
+files -> supporting files
+vars -> load main.yaml
+templates -> supporting templates, template module checks here
+handlers -> these are notifiers, you can trigger when something is changed, otherwise not required
