@@ -1,0 +1,88 @@
+dynamic block
+=============
+we can create repeated blocks using terraform dynamic block, syntax is
+
+# ingress block
+  # this give us special vairable ingress
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content{
+        from_port        = ingress.value.port
+        to_port          = ingress.value.port
+        protocol         = "tcp" # all traffic
+        cidr_blocks      = ingress.value.cidr_blocks
+    }
+  }
+  
+data sources
+=============
+resource blocks are are used to create services/resources inside provider platform. We can use data sources to query the existing information in provider
+
+state
+======
+terraform creates the declared infra. It should match actual infra with desired infra always
+
+declared/desired/asked/expected
+
+terraform stores what it had created in statefile, it is like memory to terraform
+
+.tf files -> declared/desired infra
+inside provider -> actual infra
+state file -> what terraform had created like memory -> terraform owns completely
+
+desired infra == actual infra
+
+1st time
+========
+declared infra
+actual infra not create
+no state file
+
+after apply state file created
+
+2nd time
+========
+terraform apply
+
+state file == actual infra -> nothing changed outside of terraform
+.tf files == actual infra
+
+change tf files
+=============
+statefile == actual infra
+.tf files != actual infra
+
+change outside of terraform
+================
+statefile != actual infra
+.tf files != actual infra
+
+destroyed manually
+=============
+statefile != actual infra
+.tf files != actual infra
+
+in colloboration environment, we must maintain state file remotely to prevent errors and duplicates. it should be locked as well.
+
+securing the state file
+======================
+1. it is owned by terraform 100%, we are not allowed to touch it
+2. users should not have state file delete access
+3. we enable versions
+4. we enable data replication as backup
+
+
+locals
+=======
+1. vars inside variables is not allowed. locals are like variables, it has extra capabilities
+2. we can use vars inside locals , locals inside locals
+3. we can assign expressions or functions to locals and reuse them
+4. we cant override locals
+
+provisioners
+==========
+provisioners are used to execute scripts or commands either at creation time or destroy of resources. in aws we can use provisioners either at the time of instance creation or destroy
+
+1. local-exec -> executes locally, where terraform command executes
+2. remote-exec -> remotely, i.e inside the server
+3. file -> from local to remote
